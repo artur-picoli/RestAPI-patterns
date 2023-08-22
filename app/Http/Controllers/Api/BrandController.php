@@ -7,7 +7,7 @@ use App\Filters\BrandFilters;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Brand\CreateRequest;
 use App\Http\Requests\Api\Brand\UpdateRequest;
-use App\Http\Resources\Brand\BrandResource;
+use App\Http\Resources\BrandResource;
 
 class BrandController extends Controller
 {

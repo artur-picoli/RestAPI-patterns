@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Resources\Car;
+namespace App\Http\Resources;
 
-use App\Http\Resources\Brand\BrandResource;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class CarResource extends JsonResource
+class MeResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,10 +17,9 @@ class CarResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'model' => $this->model,
-            'year' => $this->year,
-            'color' => $this->color,
-            'brand' => new BrandResource($this->whenLoaded('brand'))
+            'name' => $this->name,
+            'cpf' => $this->email,
+            'created_at' => Carbon::make($this->created_at)->format('d-m-Y')
         ];
     }
 }

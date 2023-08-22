@@ -7,7 +7,7 @@ use App\Filters\CarFilters;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Car\CreateRequest;
 use App\Http\Requests\Api\Car\UpdateRequest;
-use App\Http\Resources\Car\CarResource;
+use App\Http\Resources\CarResource;
 
 class CarController extends Controller
 {

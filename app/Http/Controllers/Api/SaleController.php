@@ -6,7 +6,7 @@ use App\Contracts\Repository\SaleRepositoryInterface;
 use App\Filters\SaleFilters;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Sale\CreateRequest;
-use App\Http\Resources\Sale\SaleResource;
+use App\Http\Resources\SaleResource;
 
 class SaleController extends Controller
 {

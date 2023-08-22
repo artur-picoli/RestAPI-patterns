@@ -7,7 +7,7 @@ use App\Filters\CustomerFilters;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Customer\CreateRequest;
 use App\Http\Requests\Api\Customer\UpdateRequest;
-use App\Http\Resources\Customer\CustomerResource;
+use App\Http\Resources\CustomerResource;
 
 class CustomerController extends Controller
 {

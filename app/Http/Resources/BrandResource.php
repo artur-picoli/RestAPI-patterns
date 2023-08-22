@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Resources\Brand;
+namespace App\Http\Resources;
 
-use App\Http\Resources\Car\CarResource;
-use App\Http\Resources\Sale\SaleResource;
+use App\Http\Resources\CarResource;
+use App\Http\Resources\SaleResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
