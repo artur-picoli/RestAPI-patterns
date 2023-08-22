@@ -31,6 +31,14 @@ class ResponseServiceProvider extends ServiceProvider
         });
 
         Response::macro('created', function ($data, $message = 'Registro criado com sucesso!') {
+
+            if (is_array($data) && !empty($data)) {
+                return Response::json([
+                    'message' => $message,
+                    'data' => $data
+                ], 201);
+            }
+
             if (count($data->getAttributes())) {
                 return Response::json([
                     'message' => $message,
@@ -58,15 +66,11 @@ class ResponseServiceProvider extends ServiceProvider
             ], 200);
         });
 
-        Response::macro('noContent', function ($data = []) {
-            return Response::json([], 204);
-        });
-
         Response::macro('badRequest', function ($message = 'Falha de validação', $errors = []) use ($instance) {
             return $instance->handleErrorResponse($message, $errors, 400);
         });
 
-        Response::macro('unauthorized', function ($message = 'Usuário não autorizado', $errors = []) use ($instance) {
+        Response::macro('unauthorized', function ($message = 'Usuário ou senha inválidos', $errors = []) use ($instance) {
             return $instance->handleErrorResponse($message, $errors, 401);
         });
 

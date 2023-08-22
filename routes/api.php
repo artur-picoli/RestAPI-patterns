@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\BrandController;
 use App\Http\Controllers\Api\CarController;
 use App\Http\Controllers\Api\CustomerController;
@@ -18,19 +19,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::apiResource('marcas', BrandController::class );
+Route::post('/registrar', [AuthController::class, 'register']);
 
-Route::apiResource('carros', CarController::class );
+Route::post('/login', [AuthController::class, 'login']);
 
-Route::apiResource('clientes', CustomerController::class );
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/me', [AuthController::class, 'me']);
 
-Route::apiResource('vendas', SaleController::class );
+    Route::post('/logout', [AuthController::class, 'logout']);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+    Route::apiResource('marcas', BrandController::class);
+
+    Route::apiResource('carros', CarController::class);
+
+    Route::apiResource('clientes', CustomerController::class);
+
+    Route::apiResource('vendas', SaleController::class);
 });
 
-Route::fallback(function(){
+Route::fallback(function () {
     return response()->json([
-        'message' => 'Rota não encontrada.'], 404);
+        'message' => 'Rota não encontrada.'
+    ], 404);
 });
