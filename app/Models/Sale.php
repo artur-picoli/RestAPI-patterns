@@ -5,7 +5,6 @@ namespace App\Models;
 use App\Filters\Traits\Filterable;
 use App\Models\Car;
 use App\Models\Customer;
-use DateTimeInterface;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -24,11 +23,6 @@ class Sale extends Model
     protected $with = [
         'customer'
     ];
-
-    protected function serializeDate(DateTimeInterface $date): string
-    {
-        return $date->format('d-m-Y H:i:s');
-    }
 
     protected function price(): Attribute
     {

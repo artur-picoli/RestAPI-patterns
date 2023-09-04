@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\Request;
 use InvalidArgumentException;
@@ -57,6 +58,14 @@ class Handler extends ExceptionHandler
                 return response()->json([
                     'message' => 'O argumento deve ser um ID do tipo inteiro'
                 ], 405);
+            }
+        });
+
+        $this->renderable(function (AuthenticationException $e, $request) {
+            if ($request->is('api/*') && $e instanceof AuthenticationException) {
+                return response()->json([
+                    'message' => 'Usuário não autenticado.'
+                ], 401);
             }
         });
     }

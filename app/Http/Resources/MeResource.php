@@ -18,8 +18,8 @@ class MeResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'cpf' => $this->email,
-            'created_at' => Carbon::make($this->created_at)->format('d-m-Y')
+            'email' => $this->email,
+            'created_at' => Carbon::make($this->created_at)->format('d-m-Y H:i:s')
         ];
     }
 }

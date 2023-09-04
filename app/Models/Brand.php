@@ -4,7 +4,6 @@ namespace App\Models;
 
 use App\Filters\Traits\Filterable;
 use App\Models\Car;
-use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -17,11 +16,6 @@ class Brand extends Model
     protected $fillable = [
         'name',
     ];
-
-    protected function serializeDate(DateTimeInterface $date): string
-    {
-        return $date->format('d-m-Y H:i:s');
-    }
 
     public function cars(): HasMany
     {

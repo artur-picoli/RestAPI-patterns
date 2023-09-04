@@ -6,10 +6,10 @@ use App\Contracts\Repository\BrandRepositoryInterface;
 use App\Contracts\Repository\CarRepositoryInterface;
 use App\Contracts\Repository\CustomerRepositoryInterface;
 use App\Contracts\Repository\SaleRepositoryInterface;
-use App\Repository\SaleRepository;
 use App\Repository\BrandRepository;
 use App\Repository\CarRepository;
 use App\Repository\CustomerRepository;
+use App\Repository\SaleRepository;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -19,7 +19,7 @@ class RepositoryServiceProvider extends ServiceProvider
         BrandRepositoryInterface::class => BrandRepository::class,
         CarRepositoryInterface::class => CarRepository::class,
         CustomerRepositoryInterface::class => CustomerRepository::class,
-        SaleRepositoryInterface::class => SaleRepository::class
+        SaleRepositoryInterface::class => SaleRepository::class,
     ];
 
     /**
