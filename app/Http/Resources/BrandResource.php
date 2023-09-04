@@ -22,7 +22,7 @@ class BrandResource extends JsonResource
             'cars_count'=> $this->whenHas('cars_count'),
             'sales_count' => $this->whenHas('sales_count'),
             'cars' => CarResource::collection($this->whenLoaded('cars')),
-            'sales' => SaleResource::collection($this->whenLoaded('sales'))
+            'sales' => SaleResource::collection($this->whenLoaded('sales')),
         ];
     }
 }
