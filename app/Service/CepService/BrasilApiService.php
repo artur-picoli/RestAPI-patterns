@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Service\CepService;
 
 use App\Contracts\Service\PostalCodeServiceInterface;
+use App\DTO\CepDTO;
 use Illuminate\Support\Facades\Http;
 
 
@@ -19,16 +20,19 @@ class BrasilApiService implements PostalCodeServiceInterface
 
         $response = $response->object();
 
-        $response->via = 'brasil-api';
-
-        return $response;
+        return CepDTO::create([
+            'cep' => $response->cep,
+            'logradouro' => $response->street,
+            'bairro' => $response->neighborhood,
+            'cidade' => $response->city,
+            'uf' => $response->state,
+        ]);
     }
 
-    public function testApi() : bool
+    public function testApi(): bool
     {
         $response =  Http::get($this->baseUrl . "18990156");
 
         return $response->status() == 200 ?? false;
-
     }
 }

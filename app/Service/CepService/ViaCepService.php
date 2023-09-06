@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Service\CepService;
 
 use App\Contracts\Service\PostalCodeServiceInterface;
+use App\DTO\CepDTO;
 use Illuminate\Support\Facades\Http;
 
 
@@ -19,12 +20,16 @@ class ViaCepService implements PostalCodeServiceInterface
 
         $response = $response->object();
 
-        $response->via = 'via-cep';
-
-        return $response;
+        return CepDTO::create([
+            'cep' => $response->cep,
+            'logradouro' => $response->logradouro,
+            'bairro' => $response->bairro,
+            'cidade' => $response->localidade,
+            'uf' => $response->uf,
+        ]);
     }
 
-    public function testApi() : bool
+    public function testApi(): bool
     {
         $response =  Http::get($this->baseUrl . "18990156/json/");
 

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Repository\Base;
 
 use App\Contracts\Repository\Base\BaseRepositoryInterface;
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Model;
 
 
