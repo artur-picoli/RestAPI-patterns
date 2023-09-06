@@ -38,7 +38,7 @@ class Handler extends ExceptionHandler
 
             if ($request->is('api/*') && $e instanceof InvalidArgumentException) {
                 return response()->json([
-                    'message' => 'Erro interno'
+                    'message' => 'Erro interno.'
                 ], 500);
             }
         });
@@ -47,7 +47,7 @@ class Handler extends ExceptionHandler
 
             if ($request->is('api/*') && $e instanceof MethodNotAllowedHttpException) {
                 return response()->json([
-                    'message' => 'Método não suportado, ou rota não encontrada'
+                    'message' => 'Método não suportado, ou rota não encontrada.'
                 ], 405);
             }
         });
@@ -56,7 +56,7 @@ class Handler extends ExceptionHandler
 
             if ($request->is('api/*') && $e instanceof TypeError) {
                 return response()->json([
-                    'message' => 'O argumento deve ser um ID do tipo inteiro'
+                    'message' => 'O argumento informado não corresponde ao tipo esperado.'
                 ], 405);
             }
         });

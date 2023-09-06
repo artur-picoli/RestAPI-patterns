@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\api\customer;
 
+use App\Rules\Cep;
 use Illuminate\Foundation\Http\FormRequest;
 
 class PostalCodeRequest extends FormRequest
@@ -22,7 +23,7 @@ class PostalCodeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'cep' => ['required','string', 'digits:8']
+            'cep' => ['required','string', new Cep]
         ];
     }
 }

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\api\customer\PostalCodeRequest;
 use App\Http\Resources\CepResource;
 use Exception;
+use Illuminate\Support\Facades\Cache;
 
 class PostalCodeController extends Controller
 {
@@ -19,13 +20,18 @@ class PostalCodeController extends Controller
         $cep = $request->validated()['cep'];
 
         try {
-            $response = $this->service->findAddress($cep);
+
+            $response = Cache::rememberForever($cep, function () use ($cep) {
+                return $this->service->findAddress($cep);
+            });
 
             return response()->ok(new CepResource($response));
 
         } catch (Exception $e) {
 
-            return response()->json(['message'=> 'Serviço indisponível no momento. Tente novamente mais tarde'], 500);
+            Cache::forget($cep);
+
+            return response()->notFound('CEP não encontrado!');
         }
     }
 }
