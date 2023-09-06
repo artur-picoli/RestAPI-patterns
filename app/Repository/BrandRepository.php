@@ -22,6 +22,7 @@ class BrandRepository extends BaseRepository implements BrandRepositoryInterface
     {
         return $this->model->query()
             ->filter($filters)
+            ->latest()
             ->paginate(request()->query('perPage', 10));
     }
 
@@ -34,7 +35,7 @@ class BrandRepository extends BaseRepository implements BrandRepositoryInterface
         return $this->model;
     }
 
-    public function update(int $id, array $data): Brand
+    public function update(string $id, array $data): Brand
     {
 
         $brand = $this->findById($id);

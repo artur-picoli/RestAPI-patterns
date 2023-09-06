@@ -6,13 +6,14 @@ use App\Filters\Traits\Filterable;
 use App\Models\Car;
 use App\Models\Customer;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Sale extends Model
 {
-    use HasFactory, Filterable;
+    use HasFactory, Filterable, HasUlids;
 
     protected $fillable = [
         'car_id',

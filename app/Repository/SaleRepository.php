@@ -25,10 +25,11 @@ class SaleRepository extends BaseRepository implements SaleRepositoryInterface
             ->query()
             ->with('car.brand')
             ->filter($filters)
+            ->latest()
             ->paginate(request()->query('perPage', 10));
     }
 
-    public function findById(int $id): Model
+    public function findById(string $id): Model
     {
         return $this->model
             ->query()
@@ -45,7 +46,7 @@ class SaleRepository extends BaseRepository implements SaleRepositoryInterface
         return $this->model->load(['car.brand', 'customer']);
     }
 
-    public function update(int $id, array $data): Sale
+    public function update(string $id, array $data): Sale
     {
         $sale = $this->findById($id);
 

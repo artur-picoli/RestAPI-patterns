@@ -15,13 +15,13 @@ abstract class BaseRepository implements BaseRepositoryInterface
     {
     }
 
-    public function findById(int $id): Model
+    public function findById(string $id): Model
     {
         return $this->model->query()
             ->findOrFail($id);
     }
 
-    public function deleteById(int $id): bool
+    public function deleteById(string $id): bool
     {
         $model = $this->findById($id);
 

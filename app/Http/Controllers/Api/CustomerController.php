@@ -32,14 +32,14 @@ class CustomerController extends Controller
     }
 
 
-    public function show(int $id)
+    public function show(string $id)
     {
         $data = $this->customerRepository->findById($id);
 
         return response()->ok(new CustomerResource($data));
     }
 
-    public function update(UpdateRequest $request, int $id)
+    public function update(UpdateRequest $request, string $id)
     {
         $validated = $request->validated();
 
@@ -48,7 +48,7 @@ class CustomerController extends Controller
         return response()->updated(new CustomerResource($data));
     }
 
-    public function destroy(int $id)
+    public function destroy(string $id)
     {
         $this->customerRepository->deleteById($id);
 
