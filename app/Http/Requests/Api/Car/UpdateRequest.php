@@ -25,7 +25,7 @@ class UpdateRequest extends FormRequest
             'model' => ['required', 'string', 'max:255'],
             'year' => ['required', 'integer', 'digits:4', 'min:1900'],
             'color' => ['required', 'string', 'max:50'],
-            'brand_id' => ['required', 'integer', 'exists:brands,id' ]
+            'brand_id' => ['required', 'string', 'exists:brands,id' ]
         ];
     }
 }

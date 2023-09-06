@@ -22,8 +22,8 @@ class CreateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'customer_id' => ['required','exists:customers,id', 'integer'],
-            'car_id' => ['required', 'exists:cars,id', 'integer'],
+            'customer_id' => ['required','exists:customers,id', 'string'],
+            'car_id' => ['required', 'exists:cars,id', 'string'],
             'price' => ['required', 'decimal:2']
         ];
     }

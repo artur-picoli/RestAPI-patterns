@@ -9,18 +9,18 @@ use Illuminate\Database\Eloquent\Model;
 interface BaseRepositoryInterface
 {
     /**
-     * @param int $id
+     * @param string $id
      * @return Model
      * @throws ModelNotFoundException
      */
-    public function findById(int $id): Model;
+    public function findById(string $id): Model;
 
     /**
-     * @param int $id
+     * @param string $id
      * @return bool
      * @throws ModelNotFoundException
      */
-    public function deleteById(int $id): bool;
+    public function deleteById(string $id): bool;
 
     /**
      * @param array $data
@@ -30,11 +30,11 @@ interface BaseRepositoryInterface
     public function create(array $data): Model;
 
     /**
-     * @param int $id
+     * @param string $id
      * @param array $data
      * @return Model
      * @throws ModelNotFoundException
      */
 
-    public function update(int $id, array $data): Model;
+    public function update(string $id, array $data): Model;
 }

@@ -12,14 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('sales', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('customer_id');
-            $table->foreign('customer_id')
+            $table->ulid('id')->primary();
+            $table->foreignUlid('customer_id')
                 ->references('id')
                 ->on('customers')
                 ->cascadeOnDelete();
-            $table->unsignedBigInteger('car_id');
-            $table->foreign('car_id')
+            $table->foreignUlid('car_id')
                 ->references('id')
                 ->on('cars')
                 ->cascadeOnDelete();

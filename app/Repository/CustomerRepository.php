@@ -23,6 +23,7 @@ class CustomerRepository extends BaseRepository implements CustomerRepositoryInt
     {
         return $this->model->query()
             ->filter($filters)
+            ->latest()
             ->paginate(request()->query('perPage', 10));
     }
 
@@ -35,7 +36,7 @@ class CustomerRepository extends BaseRepository implements CustomerRepositoryInt
         return $this->model;
     }
 
-    public function update(int $id, array $data): Customer
+    public function update(string $id, array $data): Customer
     {
         $customer = $this->findById($id);
 

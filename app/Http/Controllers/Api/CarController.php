@@ -33,14 +33,14 @@ class CarController extends Controller
     }
 
 
-    public function show(int $id)
+    public function show(string $id)
     {
         $data = $this->carRepository->findById($id);
 
         return response()->ok(new CarResource($data));
     }
 
-    public function update(UpdateRequest $request, int $id)
+    public function update(UpdateRequest $request, string $id)
     {
         $validated = $request->validated();
 
@@ -50,7 +50,7 @@ class CarController extends Controller
     }
 
 
-    public function destroy(int $id)
+    public function destroy(string $id)
     {
         $this->carRepository->deleteById($id);
 

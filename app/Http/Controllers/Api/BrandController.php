@@ -33,14 +33,14 @@ class BrandController extends Controller
     }
 
 
-    public function show(int $id)
+    public function show(string $id)
     {
         $data = $this->BrandRepository->findById($id);
 
         return response()->ok(new BrandResource($data));
     }
 
-    public function update(UpdateRequest $request, int $id)
+    public function update(UpdateRequest $request, string $id)
     {
         $validated = $request->validated();
 
@@ -50,7 +50,7 @@ class BrandController extends Controller
     }
 
 
-    public function destroy(int $id)
+    public function destroy(string $id)
     {
         $this->BrandRepository->deleteById($id);
 

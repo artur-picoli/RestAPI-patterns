@@ -23,10 +23,11 @@ class CarRepository extends BaseRepository implements CarRepositoryInterface
         return $this->model->query()
             ->with('brand')
             ->filter($filters)
+            ->latest()
             ->paginate(request()->query('perPage', 10));
     }
 
-    public function findById(int $id): Car
+    public function findById(string $id): Car
     {
         return $this->model
             ->query()
@@ -43,7 +44,7 @@ class CarRepository extends BaseRepository implements CarRepositoryInterface
         return $this->model->load('brand');
     }
 
-    public function update(int $id, array $data): Car
+    public function update(string $id, array $data): Car
     {
 
         $car = $this->findById($id);

@@ -26,7 +26,7 @@ class IndexRequest extends FormRequest
             'start_year' => ['nullable', 'integer', 'digits:4', 'min:1900'],
             'finish_year' => ['nullable', 'integer', 'digits:4', 'after_or_equal:start_year'],
             'color' => ['nullable','string','max:50'],
-            'brand_id' => ['nullable', 'integer', 'exists:brands,id' ]
+            'brand_id' => ['nullable', 'string', 'exists:brands,id' ]
         ];
     }
 }

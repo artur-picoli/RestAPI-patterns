@@ -31,14 +31,14 @@ class SaleController extends Controller
         return response()->created(new SaleResource($data));
     }
 
-    public function show(int $id)
+    public function show(string $id)
     {
         $data = $this->saleRepository->findById($id);
 
         return response()->ok(new SaleResource($data));
     }
 
-    public function update(CreateRequest $request, int $id)
+    public function update(CreateRequest $request, string $id)
     {
         $validated = $request->validated();
 
@@ -47,7 +47,7 @@ class SaleController extends Controller
         return response()->updated(new SaleResource($data));
     }
 
-    public function destroy(int $id)
+    public function destroy(string $id)
     {
         $this->saleRepository->deleteById($id);
 
