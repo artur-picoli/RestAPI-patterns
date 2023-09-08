@@ -3,12 +3,13 @@
 namespace App\Filters\Traits;
 
 use App\Filters\Base\QueryFilters;
+use Illuminate\Database\Eloquent\Builder;
 
 
 trait Filterable
 {
-    public function scopeFilter($query, QueryFilters $filters)
+    public function scopeFilter(Builder $builder, QueryFilters $filters)
     {
-        return $filters->apply($query);
+        return $filters->apply($builder);
     }
 }

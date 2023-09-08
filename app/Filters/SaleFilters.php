@@ -7,10 +7,8 @@ use App\Http\Requests\Api\Sale\IndexRequest;
 
 class SaleFilters extends QueryFilters
 {
-    protected $request;
     public function __construct(IndexRequest $request)
     {
-        $this->request = $request;
         parent::__construct($request->validated());
     }
 
