@@ -49,19 +49,19 @@ class ResponseServiceProvider extends ServiceProvider
             ], 200);
         });
 
-        response()->macro('badRequest', function ($message = 'Falha de validação', $errors = []) use ($instance) {
+        response()->macro('badRequest', function ($message = 'Falha de validação.', $errors = []) use ($instance) {
             return $instance->handleErrorResponse($message, $errors, 400);
         });
 
-        response()->macro('unauthorized', function ($message = 'Usuário ou senha inválidos', $errors = []) use ($instance) {
+        response()->macro('unauthorized', function ($message = 'Usuário ou senha inválidos.', $errors = []) use ($instance) {
             return $instance->handleErrorResponse($message, $errors, 401);
         });
 
-        response()->macro('forbidden', function ($message = 'Acesso negado', $errors = []) use ($instance) {
+        response()->macro('forbidden', function ($message = 'Acesso negado.', $errors = []) use ($instance) {
             return $instance->handleErrorResponse($message, $errors, 403);
         });
 
-        response()->macro('notFound', function ($message = 'Registro não encontrado', $errors = []) use ($instance) {
+        response()->macro('notFound', function ($message = 'Registro não encontrado.', $errors = []) use ($instance) {
             return $instance->handleErrorResponse($message, $errors, 404);
         });
 
